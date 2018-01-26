@@ -124,7 +124,34 @@ public class CalendarStuff {
        // This is for an invalid month
        
    }
-
+    /**
+     * A method to determine if two dates are exactly equal
+     * @param    month1 long    containing month number, starting with "1" for "January"
+     * @param    day1   long    containing day number
+     * @param    year1  long    containing four-digit year
+     * @param    month2 long    containing month number, starting with "1" for "January"
+     * @param    day2   long    containing day number
+     * @param    year2  long    containing four-digit year
+     * @return          boolean which is true if the two dates are exactly the same
+     */
+    public static boolean dateEquals( long month1, long day1, long year1, long month2, long day2, long year2 ) {
+        return true;  // replace this with the actual code
+    }
+    
+    /**
+     * A method to compare the ordering of two dates
+     * @param    month1 long   containing month number, starting with "1" for "January"
+     * @param    day1   long   containing day number
+     * @param    year1  long   containing four-digit year
+     * @param    month2 long   containing month number, starting with "1" for "January"
+     * @param    day2   long   containing day number
+     * @param    year2  long   containing four-digit year
+     * @return          int    -1/0/+1 if first date is less than/equal to/greater than second
+     */
+    public static int compareDate( long month1, long day1, long year1, long month2, long day2, long year2 ) {
+        return 0;  // replace this with the actual code
+    }
+    
   /**
    * A method to return whether a date is a valid date
    * @param    month long    containing month number, starting with "1" for "January"
@@ -152,6 +179,28 @@ public class CalendarStuff {
        }
        
    }
+    /**
+     * A method to return a string version of the month name
+     * @param    month long   containing month number, starting with "1" for "January"
+     * @return         String containing the string value of the month (no spaces)
+     */
+
+    public static String toMonthString( int month ) {
+        switch( month - 1 ) {
+            default: throw new IllegalArgumentException( "Illegal month value given to 'toMonthString()'." );
+        }
+    }
+    
+    /**
+     * A method to return a string version of the day of the week name
+     * @param    day int    containing day number, starting with "1" for "Sunday"
+     * @return       String containing the string value of the day (no spaces)
+     */
+    public static String toDayOfWeekString( int day ) {
+        switch( day - 1 ) {
+            default       : throw new IllegalArgumentException( "Illegal day value given to 'toDayOfWeekString()'." );
+        }
+    }
   /**
    * A method to return a count of the total number of days between two valid dates
    * @param    month1 long   containing month number, starting with "1" for "January"
@@ -181,5 +230,5 @@ public class CalendarStuff {
                throw new UnsupportedOperationException();
            }
        // There is an invalid date
-       }
    }
+}
