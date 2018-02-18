@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 A TOTAL OF SIXTY-SEVEN TESTS TO CHECK OPERATION OF THE STRINGSTUFF CLASS METHODS
 
 FIFTEEN TESTS FOR containsVowel():
@@ -78,3 +79,84 @@ FOUR TESTS FOR reverse():
    Testing 'XYloPHonES' should return SEnoHPolYX: got it
    Testing 'AmanAplanAcAnalpAnamA' should return AmanAplanAcAnalpAnamA: got it
    Testing 'shut the front door 1234567890' should return 0987654321 rood tnorf eht tuhs: got it
+=======
+A TOTAL OF SIXTY-SEVEN TESTS TO CHECK OPERATION OF THE STRINGSTUFF CLASS METHODS
+
+FIFTEEN TESTS FOR containsVowel():
+   Test for all lowercase vowels: true
+   Test for all uppercase vowels: true
+   Test for detecting lowercase 'a': true
+   Test for detecting uppercase 'A': true
+   Test for detecting lowercase 'e': true
+   Test for detecting uppercase 'E': true
+   Test for detecting lowercase 'i': true
+   Test for detecting uppercase 'I': true
+   Test for detecting lowercase 'o': true
+   Test for detecting uppercase 'O': true
+   Test for detecting lowercase 'u': true
+   Test for detecting uppercase 'U': true
+   Test for detecting lowercase 'y': true
+   Test for detecting uppercase 'Y': true
+   Test for detecting there are none: false
+   Test for string containing numbers and symbols with 'a' at the end: true
+
+TEN TESTS FOR isPalindrome():
+   Testing 'a' should return true: true
+   Testing 'ab' should return false: false
+   Testing 'aba' should return true: true
+   Testing 'amanaplanacanalpanama' should return true: true
+   Testing 'ABBA' should return true: true
+   Testing 'RaCeCaR' should return true: true
+   Testing 'madamiamadam' should return false: false
+   Testing 'abcdefghigfedcba' should return false: false
+   Testing 'abcdefgh gfedcba' should return false: false
+   Testing '1!2@3#4$5%5$4#3@2!1' should return true: true
+
+NINE TESTS FOR evensOnly():
+   Testing 'REHEARSALSZ' should return RHRLZ: don't got it
+   Testing 'REhearSALsz' should return RhrLz: don't got it
+   Testing 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' should return BDFHJLNPRTVXZ: don't got it
+   Testing 'abcdefghijklmnopqrstuvwxyz' should return bdfhjlnprtvxz: don't got it
+   Testing 'AbCdEfGhIjKlMnOpQrStUvWxYz' should return bdfhjlnprtvxz: don't got it
+   Testing 'ACEGIKMOQSUWY' should return empty string: don't got it
+   Testing 'acegikmoqsuwy' should return empty string: don't got it
+   Testing empty string should return empty string: got it
+   Testing 'REhe12ar^^SALsz' should return RhrLz: don't got it
+
+NINE TESTS FOR oddsOnly():
+   Testing 'xylophones' should return yooes: don't got it
+   Testing 'XYloPHonES' should return YooES: don't got it
+   Testing 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' should return ACEGIKMOQSUWY: don't got it
+   Testing 'abcdefghijklmnopqrstuvwxyz' should return bdfhjlnprtvxz: don't got it
+   Testing 'AbCdEfGhIjKlMnOpQrStUvWxYz' should return bdfhjlnprtvxz: don't got it
+   Testing 'BDFHJLNPRTVXZ' should return empty string: don't got it
+   Testing 'bdfhjlnprtvxz' should return empty string: don't got it
+   Testing empty string should return empty string: got it
+   Testing 'xy$%lo23ph((on97es' should return yooes: don't got it
+
+EIGHT TESTS FOR evensOnlyNoDupes():
+   Testing 'xylophones' should return xlphn: don't got it
+   Testing 'XYloPHonES' should return XlPHn: don't got it
+   Testing 'AAAABBBBAAAA' should return B: don't got it
+   Testing 'shshshshshshshsh' should return h: don't got it
+   Testing 'AAbbAAbbCCddCCdd' should return bd: don't got it
+   Testing empty string should return empty string: got it
+   Testing 'California' should return lfrn: don't got it
+   Testing 'ACEGIKMOQSUWYACEGIKMOQSUWY' should return the empty string: don't got it
+
+EIGHT TESTS FOR oddsOnlyNoDupes():
+   Testing 'xylophones' should return yoes: don't got it
+   Testing 'XYloPHonES' should return YoES: don't got it
+   Testing 'AAAABBBBAAAA' should return A: don't got it
+   Testing 'shshshshshshshsh' should return h: don't got it
+   Testing 'AAbbAAbbCCddCCdd' should return bd: don't got it
+   Testing empty string should return empty string: got it
+   Testing 'California' should return aio: don't got it
+   Testing 'BDFHJLNPRTVXBDFHJLNPRTVX' should return the empty string: don't got it
+
+FOUR TESTS FOR reverse():
+   Testing 'xylophones' should return senohpolyx: got it
+   Testing 'XYloPHonES' should return SEnoHPolYX: got it
+   Testing 'AmanAplanAcAnalpAnamA' should return AmanAplanAcAnalpAnamA: got it
+   Testing 'shut the front door 1234567890' should return 0987654321 rood tnorf eht tuhs: got it
+>>>>>>> 2a66e790d4f5eb392c50acb6247351f8392b80c3
