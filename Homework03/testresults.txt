@@ -1,0 +1,3 @@
+Die roll: 1
+Die Instance String: 3
+Die Static String: 1

@@ -52,7 +52,8 @@ public class Die {
    * Note: parameter must be checked for validity; invalid value must throw "IllegalArgumentException"
    */
     public Die( int nSides ) {
-       if( nSides < MINIMUM_SIDES ){
+       // if( nSides < MINIMUM_SIDES ){  YOU HAVE YOUR LOGIC BACKWARDS HERE; SEE THE NEXT LINE
+       if( nSides >= MINIMUM_SIDES ){
            this.sides = nSides;
        } else {
            throw new IllegalArgumentException( "The minimum number of sides is 4.");

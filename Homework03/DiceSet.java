@@ -45,10 +45,11 @@ public class DiceSet{
    * @throws IllegalArgumentException if one or both arguments don't make sense
    * @note   parameters are checked for validity; invalid values throw "IllegalArgumentException"
    */
-   public Die( int count, int sides ) {
+   // public Die( int count, int sides ) {   THIS IS THE WRONG CONSTRUCTOR!  NAMES MUST MATCH
+   public DiceSet( int count, int sides ) {
        this.count = count;
        this.side = sides;
-       if(count < 1 || 
+       if(count < 1 ||
        sides < MINIMUM_SIDES )
            throw new IllegalArgumentException();
        this.ds = new Die[ count ];
@@ -140,24 +141,24 @@ public class DiceSet{
        DiceSet Player1 = new DiceSet(4,2);
        DiceSet Player2 = new DiceSet (3,1);
        DiceSet Player3 = new DiceSet (9,1);
-       
+
        Player1.roll();
        Player2.roll();
        Player3.roll();
-       
-  
+
+
        System.out.println("Player 1 test: ");
        System.out.println("Player 1: " + Player1);
        System.out.println("sum: " + Player1.sum());
        steve.rollIndividual(0);
        System.out.println("roll individual (0): " + Player1);
-   
+
        System.out.println("Player 2 test: ");
        System.out.println("Player 2: " + Player2);
        System.out.println("sum: " + Player2.sum());
        steve.rollIndividual(2);
        System.out.println("roll individual (2): " + steve);
-       
+
        System.out.println("Player 3 test: ");
        System.out.println("Player3: " + Player3);
        System.out.println("sum: " + Player3.sum());

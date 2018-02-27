@@ -1,0 +1,53 @@
+
+Evaluation for homework 03: Dice Game
+
+Die, DiceSet, and HighRoll Program
+Includes running DieAndDiceSetTestHarness
+Includes running automated HighRoll tests
+=========================================
+
+A total of one point each for the following:
+
+class Die         : Exists, coding style acceptable   - 1 point
+constructor       : logic is reversed in constructor  - 0.5 point
+roll              : works                             - 1 point
+getValue          : works                             - 1 point
+setSides          : works                             - 1 point
+instan. toString  : works                             - 1 point
+class toString    : works                             - 1 point
+main for testing  : Exists, with some tests in it     - 1 point
+
+class DiceSet     : Exists, coding style acceptable   - 1 point
+constructor       : name incorrect, won't compile     - 0.5 point
+sum               : won't compile, can't test this    - 0 point
+roll              : won't compile, can't test this    - 0 point
+rollIndividual    : won't compile, can't test this    - 0 point
+getIndividual     : won't compile, can't test this    - 0 point
+instan. toString  : won't compile, can't test this    - 0 point
+class toString    : won't compile, can't test this    - 0 point
+isIdentical       : won't compile, can't test this    - 0 point
+main for testing  : Exists, with some tests in it     - 1 point
+
+class HighRoll    : Exists, coding style acceptable   - 1 point
+TUI:              : won't compile due to DiceSet      - 0 point
+option 1 roll all : won't compile due to DiceSet      - 0 point
+option 2 roll one : won't compile due to DiceSet      - 0 point
+option 3 sum      : won't compile due to DiceSet      - 0 point
+option 4 save     : won't compile due to DiceSet      - 0 point
+option 5 display  : won't compile due to DiceSet      - 0 point
+option 6 quit     : won't compile due to DiceSet      - 0 point
+
+Files in Git      : all three present                 - 1 point
+Test Harness      : won't compile due to DiceSet      - 0 point
+HighRoll          : won't compile due to DiceSet      - 0 point
+
+Total 11 out of 30 = 36.67% which is an F
+
+Jordyn, I'm sorry for the low score.  There were 24 compile errors in your DiceSet
+code.  This kept me from evaluating that module, and because it won't compile, I
+can't compile and run either the test harness or the HighRoll game file.
+
+Please feel free to contact me during office hours for help if you need it.  I
+would really like to help you understand and master this material if you want to
+do so!
+
