@@ -22,7 +22,7 @@ public class Clock{
     /**
      *  Class field definitions go here
      */
-    
+
     private static final double DEFAULT_TIME_SLICE_IN_SECONDS = 60.0;
     private static final double INVALID_ARGUMENT_VALUE = -1.0;
     private static final double MAXIMUM_DEGREE_VALUE = 360.0;
@@ -32,14 +32,14 @@ public class Clock{
     private static double minuteHandAngle = 0;
     private static double hourHandAngle = 0;
     double totalSeconds = 0;
-    
+
     /**
      *  Constructor
      */
     public Clock() {
         totalSeconds = 0;
     }
-    
+
     /**
      *
      *  Method to calculate the next tick from the time increment
@@ -50,8 +50,8 @@ public class Clock{
         totalSeconds += timeSlice;
         return totalSeconds;
     }
-    
-    
+
+
     /**
      *  Method to validate the angle argument
      *  @param   argValue  String from the main program's args[0] input
@@ -65,7 +65,7 @@ public class Clock{
         }
         return angleValue;
     }
-    
+
     /**
      *  Method to validate the optional time slice argument
      *  @param  argValue  String from the main program's args[1] input
@@ -84,7 +84,7 @@ public class Clock{
         }
         return timeSliceValue;
     }
-    
+
     /**
      *  Method to calculate and return the current position of the hour hand
      *  @return double-precision value of the hour hand location
@@ -93,7 +93,7 @@ public class Clock{
         hourHandAngle = ( totalSeconds * HOUR_HAND_DEGREES_PER_SECOND ) % 360;
         return hourHandAngle;
     }
-    
+
     /**
      *  Method to calculate and return the current position of the minute hand
      *  @return double-precision value of the minute hand location
@@ -102,7 +102,7 @@ public class Clock{
         minuteHandAngle = ( totalSeconds * MINUTE_HAND_DEGREES_PER_SECOND ) % 360;
         return minuteHandAngle;
     }
-    
+
     /**
      *  Method to calculate and return the angle between the hands
      *  @return double-precision value of the angle between the two hands
@@ -112,7 +112,7 @@ public class Clock{
         getMinuteHandAngle();
         return Math.abs( minuteHandAngle - hourHandAngle );
     }
-    
+
     /**
      *  Method to fetch the total number of seconds
      *   we can use this to tell when 12 hours have elapsed
@@ -121,7 +121,7 @@ public class Clock{
     public double getTotalSeconds() {
         return totalSeconds;
     }
-    
+
     /**
      *  Method to return a String representation of this clock
      *  @return String value of the current clock
@@ -146,14 +146,14 @@ public class Clock{
       System.out.println( "\nCLOCK CLASS TESTER PROGRAM\n" +
                           "--------------------------\n" );
       System.out.println( "  Creating a new clock: " );
-      ClockEmpty clock = new ClockEmpty();
+      Clock clock = new Clock();
       System.out.println( "    New clock created: " + clock.toString() );
-      
+
        System.out.println( "    Testing validateAngleArg()....");
       System.out.print( "      sending '  100 degrees', expecting double value   100" );
       try { System.out.println( (100 == clock.validateAngleArg( "0.0" )) ? " - got 100" : " - no joy" ); }
       catch( Exception e ) { System.out.println ( " - Exception thrown: " + e.toString() ); }
-       
+
        System.out.println( "    Testing getMinuteHand Angle()....");
        System.out.print( "      sending '  35 degrees', expecting double value   35" );
        try { System.out.println( (35 == clock.validateAngleArg( "0.0" )) ? " - got 35" : " - no joy" ); }

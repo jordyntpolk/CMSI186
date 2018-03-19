@@ -1,0 +1,99 @@
+. 
+. 
+had to fix two compile errors in Clock.java main() 
+still had "ClockEmpty clock = new ClockEmpty();" in the code 
+. 
+. 
+
+CLOCK CLASS TESTER PROGRAM
+--------------------------
+
+  Creating a new clock: 
+    New clock created: 0:0:0
+    Testing validateAngleArg()....
+      sending '  100 degrees', expecting double value   100 - no joy
+    Testing getMinuteHand Angle()....
+      sending '  35 degrees', expecting double value   35 - no joy
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+   Sorry you must enter at least one argument
+   Usage: java ClockSolver <angle> [timeSlice]
+   Please try again...........
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
+
+
+      Hello world! Welcome to the ClockSolver program!!
+
+
