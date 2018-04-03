@@ -1,7 +1,7 @@
 import java.text.DecimalFormat;
- 
+
  public class SoccerSim {
- 
+
     private static final double DEFAULT_FIELD_WIDTH   = 500.0;
     private static final double DEFAULT_FIELD_HEIGHT  = 500.0;
     private static final int    DEFAULT_BALL_COUNT    = 3;
@@ -11,8 +11,8 @@ import java.text.DecimalFormat;
     private static final double DEFAULT_TIME_SLICE    = 1.0;
     private static final int    NUMBER_OF_BALL_PARAMS = 3;
     private static final String USAGE_MESSAGE         = "\n  Usage:" +
-          "\n    java SoccerSim <field-X> <field-Y> <ball-parameters> ... <ball-parameters> "
- 
+          "\n    java SoccerSim <field-X> <field-Y> <ball-parameters> ... <ball-parameters> ";
+
     private boolean  initialReport = true;
     private boolean  updateSpeed   = false;
     private double   sliceCount    = 0.0;
@@ -21,24 +21,24 @@ import java.text.DecimalFormat;
     private Clock    c             = null;
     private Field    f             = null;
     private Position pole          = null;
- 
+
     public SoccerSim() {
        c = new Clock();
        pole = new Position( DEFAULT_POLEX_POS, DEFAULT_POLEY_POS );
        f = new Field( DEFAULT_FIELD_WIDTH, DEFAULT_FIELD_HEIGHT, 0.0, pole, 2 );
     }
- 
+
    /**
     *  Method to validate the input arguments
     *  @param arguments String array of the arguments supplied to the program
     */
     public void validateArgs( String arguments[] ) {
- 
+
       // no arguments specified, so put out a usage message
        if( 0 == arguments.length ) {
           System.out.println( USAGE_MESSAGE );
           System.exit( 0 );
- 
+
       // validation: first two are field x and y size of the field in feet
       //             if remaining count is odd, assume last is timeslice in seconds and remove
       //             if remaining count is not multiple of four, error
@@ -57,7 +57,7 @@ import java.text.DecimalFormat;
         }
     }
 
- 
+
    /**
     *  method to report the status of the simulation for every clock tick
     *  @param  c  Clock object which keeps track of time
@@ -81,7 +81,7 @@ import java.text.DecimalFormat;
        }
        System.out.println( output );
     }
- 
+
    /**
     *  main method of the simulation
     *  @param  args  String array of the command line arguments
