@@ -272,13 +272,13 @@ public class BrobInt {
    *  @return BrobInt that is the dividend of this BrobInt divided by the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt divide( BrobInt gint ) {
-    BrobInt output = new BrobInt( "0" );
+    BrobInt result = new BrobInt( "0" );
     if ( gint.compareTo(ZERO) == 0 ) {
       throw new IllegalArgumentException("\n Please entere a valid divisor.");
     } else if ( this.compareTo(ZERO) == 0 || this.compareTo(gint) < 0) {
-      return output;
+      return result;
     } else if ( this.compareTo(gint) == 0 ) {
-      return output = new BrobInt( "1" );
+      return result = new BrobInt( "1" );
     }
 
     int n = gint.valueLength;
@@ -290,7 +290,7 @@ public class BrobInt {
     while ( n < this.internalValue.length() ) {
       while (div.compareTo(gint) == 1) {
         div = div.subtract(gint);
-        output = output.add( ONE );
+        result = result.add( ONE );
       }
 
       n++;
@@ -301,11 +301,11 @@ public class BrobInt {
 
       BrobInt plus = new BrobInt( this.internalValue.substring(n -1, n) );
       div = div.multiply( TEN );
-      output = output.multiply( TEN );
+      result = result.multiply( TEN );
       div = div.add(plus);
     }
 
-   return output;
+   return result;
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
