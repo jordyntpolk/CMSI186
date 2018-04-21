@@ -36,27 +36,9 @@ public class Fibonacci {
    private static BrobInt b2 = BrobInt.ZERO;
    private static BrobInt b3 = BrobInt.ONE;
 
-
-   public static BrobInt getNum(int n) {
-    if(n==1){
-      return b2;
-    }else if(n==2){
-      return b3;
-    }else{
-      for(int i=2;i<n;i++){
-        b1 = b2.add(b3);
-        b2 = b1;
-        b3 = b1;
-        }
-      }
-      return b1;
-    }
     public static void main(String args[]){
     System.out.println(getNum(Integer.parseInt(args[0])));
-      }
-    }
 
-   public static void main( String[] args ) {
       System.out.println( "\n\n   Welcome to the Fibonacci sequence number finder!\n" );
       if( 0 == args.length ) {
          System.out.println( usageMessage );
@@ -104,6 +86,21 @@ public class Fibonacci {
       }
 
       System.out.println( "\n\n\n  ...HA!! Like I'm going to do the ENTIRE thing for you.....  *grins*" );
+
+  public static BrobInt getNum(int n) {
+    if(n==1){
+      return b2;
+    }else if(n==2){
+      return b3;
+    }else{
+      for(int i=2;i<n;i++){
+        b1 = b2.add(b3);
+        b2 = b1;
+        b3 = b1;
+        }
+      }
+      return b1;
+    }
 
 
       System.exit( 0 );
