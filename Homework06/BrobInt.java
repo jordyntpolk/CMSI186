@@ -61,27 +61,24 @@ public class BrobInt {
    *   for later use
    *  @param  value  String value to make into a BrobInt
    */
-   public BrobInt( String value ) {
-      internalValue = value;
-      int count = 0;
-      if(value.substring(0,1).equals("-")) {
-          sign = 1;
-          byteVersion = new byte[value.length()-1];
-          for(int i = value.length(); i >= 2; i--) {
-              byteVersion[count] = Byte.parseByte(value.substring(i-1,i));
-              reversed += value.substring(i-1,i);
-              count++;
-          }
-      }
-
-      else{
-          byteVersion = new byte[value.length()];
-          for(int i = value.length(); i >= 1; i--) {
-              byteVersion[count] = Byte.parseByte(value.substring(i-1,i));
-              reversed += value.substring(i-1,i);
-              count++;
-          }
-      }
+   public BrobInt(String value) {
+     internalValue = value;
+     if(value.charAt(0) == '-') {
+       value = value.replace("-", "");
+       sign = 1;
+     }
+     else {
+       sign = 0;
+       value = value.replace("+", "");
+     }
+       byteVersion = new byte[value.length()];
+       int index = 0;
+       for(int i = value.length()-1; i >= 0; i--) {
+         byteVersion[index] = (byte)(value.charAt(i) - 48);
+         reversed += value.charAt(i);
+         index++;
+       }
+       validateDigits(); 
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -91,14 +88,13 @@ public class BrobInt {
    *  note that there is no return false, because of throwing the exception
    *  note also that this must check for the '+' and '-' sign digits
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-   public boolean validateDigits( Character value ) {
-      String numbers = "+-1234567890";
-      for ( int i = 0; i < numbers.length(); i++ ){
-         if ( value == numbers.charAt(i) ){
-            return true;
-         }
-      }
-      throw new IllegalArgumentException();
+   public boolean validateDigits() throws IllegalArgumentException {
+     for(byte b : byteVersion) {
+       if(b > 9 || b < 0) {
+         throw new IllegalArgumentException("Invalid Digit(s)");
+       }
+     }
+     return true;
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -106,9 +102,8 @@ public class BrobInt {
    *  @return BrobInt that is the reverse of the value of this BrobInt
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt reverser() {
-      StringBuilder s = new StringBuilder(internalValue);
-      reversed = s.reverse().toString();
-      return new BrobInt(reversed);
+      String reverser = new StringBuffer(internalValue).reverse().toString();
+      return new BrobInt(reverser);
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -118,10 +113,8 @@ public class BrobInt {
    *  @return BrobInt that is the reverse of the value of the BrobInt passed as argument
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public static BrobInt reverser( BrobInt gint ) {
-      String intervalStringValue = gint.toString();
-      StringBuilder s = new StringBuilder(intervalStringValue);
-      String reversedValue = s.reverse().toString();
-      return new BrobInt(reversedValue);
+      String reverser = new StringBuffer(gint.internalValue).reverse().toString();
+      return new BrobInt(reverser);
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -242,8 +235,9 @@ public class BrobInt {
    *  @return BrobInt that is the difference of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt subtract( BrobInt gint ) {
-    throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
-  }
+    throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );     
+
+   }  
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    *  Method to multiply the value of a BrobIntk passed as argument to this BrobInt
@@ -272,40 +266,19 @@ public class BrobInt {
    *  @return BrobInt that is the dividend of this BrobInt divided by the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt divide( BrobInt gint ) {
-    BrobInt result = new BrobInt( "0" );
-    if ( gint.compareTo(ZERO) == 0 ) {
-      throw new IllegalArgumentException("\n Please entere a valid divisor.");
-    } else if ( this.compareTo(ZERO) == 0 || this.compareTo(gint) < 0) {
-      return result;
-    } else if ( this.compareTo(gint) == 0 ) {
-      return result = new BrobInt( "1" );
-    }
-
-    int n = gint.valueLength;
-    BrobInt div = new BrobInt( this.internalValue.substring( 0, n) );
-    if ( div.compareTo(gint) == -1) {
-      div.internalValue = this.internalValue.substring( 0, n + 1);
-    }
-
-    while ( n < this.internalValue.length() ) {
-      while (div.compareTo(gint) == 1) {
-        div = div.subtract(gint);
-        result = result.add( ONE );
+      BrobInt n = new BrobInt("0");
+      BrobInt thisVal = new BrobInt(internalValue);
+      if(gint.toString() == ZERO.toString()){
+        System.out.println("You can't divide by 0");
+        System.exit(1);
       }
-
-      n++;
-      
-      if ( n + 1 == this.internalValue.length() ) {
-        break;
+      if(thisVal.compareTo(gint) < 0){
+        return ZERO;
       }
-
-      BrobInt plus = new BrobInt( this.internalValue.substring(n -1, n) );
-      div = div.multiply( TEN );
-      result = result.multiply( TEN );
-      div = div.add(plus);
-    }
-
-   return result;
+      while(!(thisVal.subtract(n.multiply(gint)).compareTo(gint) < 0)){
+        n = n.add(ONE);
+      }
+      return n;
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -335,23 +308,37 @@ public class BrobInt {
    *        THAT was easy.....
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public int compareTo( BrobInt gint ) {
-   if( internalValue.length() > gint.internalValue.length() ) {
-      return 1;
-   } else if( internalValue.length() < gint.internalValue.length() ) {
-      return (-1);
-   } else {
-      for( int i = 0; i < internalValue.length(); i++ ) {
-         Character a = new Character( internalValue.charAt(i) );
-         Character b = new Character( gint.internalValue.charAt(i) );
-         if( new Character(a).compareTo( new Character(b) ) > 0 ) {
-            return 1;
-         } else if( new Character(a).compareTo( new Character(b) ) < 0 ) {
-            return (-1);
+
+     // handle the signs here
+      if( 1 == sign && 0 == gint.sign ) {
+         return -1;
+      } else if( 0 == sign && 1 == gint.sign ) {
+         return 1;
+      }
+
+     // the signs are the same at this point
+     // check the length and return the appropriate value
+     //   1 means this is longer than gint, hence larger
+     //  -1 means gint is longer than this, hence larger
+      if( internalValue.length() > gint.internalValue.length() ) {
+         return 1;
+      } else if( internalValue.length() < gint.internalValue.length() ) {
+         return (-1);
+
+     // otherwise, they are the same length, so compare absolute values
+      } else {
+         for( int i = 0; i < internalValue.length(); i++ ) {
+            Character a = Character.valueOf( internalValue.charAt(i) );
+            Character b = Character.valueOf( gint.internalValue.charAt(i) );
+            if( Character.valueOf(a).compareTo( Character.valueOf(b) ) > 0 ) {
+               return 1;
+            } else if( Character.valueOf(a).compareTo( Character.valueOf(b) ) < 0 ) {
+               return (-1);
+            }
          }
       }
+      return 0;
    }
-   return 0;
-}
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    *  Method to check if a BrobInt passed as argument is equal to this BrobInt
